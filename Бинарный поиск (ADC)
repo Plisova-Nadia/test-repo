@@ -1,0 +1,12 @@
+def V_search ():
+    dg = 0
+    i = 128
+    while i >= 1:
+        num2dac(int((dg + i) * 50 / 255))
+        time.sleep (0.00001)
+        if GPIO.input (in_chan) == 1:
+            dg += i
+        i = int(i / 2)
+    an = maxV * dg / 255
+    print(outstr.format(digital = dg, analog = an))
+    return dg
