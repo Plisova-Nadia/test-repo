@@ -1,0 +1,16 @@
+
+def adc():
+    start = 0; end = 255
+    while start <= end:
+        mid = (start + end) // 2
+        num2pins(DAC, mid)
+        time.sleep(0.0003)
+        if GPIO.input(ComparePin) == 0:
+            end = mid - 1
+        else:
+            start = mid + 1
+    
+    if end < 0:
+        return start
+    else:
+        return end
